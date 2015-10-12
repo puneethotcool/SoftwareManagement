@@ -10,6 +10,7 @@ function getTodos(res){
 			res.json(todos); // return all todos in JSON format
 		});
 };*/
+/*Pallav*/
 
 module.exports = function(app) {
 
@@ -22,6 +23,7 @@ module.exports = function(app) {
 	
 		console.log("get Request Received");
 	});
+
 
 	// create todo and send back all todos after creation
 	/*app.post('/api/todos', function(req, res) {
