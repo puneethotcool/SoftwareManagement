@@ -1,0 +1,17 @@
+{
+  "name": "LicenseManagement",
+  "version": "0.0.0",
+  "authors": [
+    "puneet"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15"
+  }
+}
