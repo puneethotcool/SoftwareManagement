@@ -1,0 +1,79 @@
+<script type="text/ng-template" id="error-messages">
+    <div ng-message="compareTo" class="messages">Must match the previous entry</div>
+</script>
+
+<form name="registrationForm" id="registrationForm"  ng-controller="registrationController as registration" novalidate
+      ng-submit="registration.submit(registrationForm.$valid)">
+    <div class="header">
+        <h3>Sign Up!!!</h3>
+    </div>
+    <div class="sep"></div>
+    <div class="inputs">
+        <table>
+            <tr class="spaceUnder">
+                <td>
+                    <label>A-Id</label>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <input type="text" ng-required="true" maxlength="7" ng-model="registration.user.username">
+                </td>
+            </tr>
+
+            <tr class="spaceUnder">
+                <td>
+                    <label>Department</label>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <input type="text" ng-required="true" maxlength="20" ng-model="registration.user.department">
+                </td>
+            </tr>
+
+            <tr class="spaceUnder">
+                <td>
+                    <label>Location</label>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <input type="text" ng-required="true" maxlength="30" ng-model="registration.user.location">
+                </td>
+            </tr>
+
+            <tr class="spaceUnder">
+                <td>
+                    <label>Password</label>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <input type="password" name="password" ng-required="true" ng-model="registration.user.password" class="form-control"/>
+                </td>
+            </tr>
+
+            <tr class="spaceUnder">
+                <td>
+                    <label>Confirm Password</label>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <input type="password" name="confirmPassword" class="form-control"
+                           ng-model="registration.user.confirmPassword"
+                           required compare-to="registration.user.password" />
+
+                    <div ng-messages="registrationForm.confirmPassword.$error">
+                        <div ng-messages-include="error-messages"></div>
+                    </div>
+
+                </td>
+            </tr>
+
+        </table>
+        <table>
+            <tr>
+                <td align="center" width="406px">
+                    <input type="submit" name="Sign Up!!!" id="submitbutton" align="center" value="Sign Up!!!">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
