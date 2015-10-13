@@ -1,6 +1,8 @@
 var licenseManagementApp = angular.module('licenseManagement', [
 					'ui.router',
+					'ngMessages',
 					'licenseControllers',
+					'registration',
 					'licenseService'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -13,8 +15,8 @@ var licenseManagementApp = angular.module('licenseManagement', [
             controller: 'viewLicenseCtrl'
         })
 		  .state('login',{
-		  	url:"/login",
-		  	templateUrl: 'view/login.html',
-		  	controller: 'loginCtrl' 
+		  	url:"/signup",
+		  	templateUrl: 'view/signup.html',
+		  	controller: 'registrationController'
 		  });
 	});

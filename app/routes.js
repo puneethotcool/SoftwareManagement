@@ -17,13 +17,17 @@ module.exports = function(app) {
 	// api ---------------------------------------------------------------------
 	// get all todos
 	app.get('/api/viewLicense', function(req, res) {
-
-		// use mongoose to get all todos in the database
-		// getTodos(res);
-	
 		console.log("get Request Received");
 	});
 
+	app.post('/api/signup', function(req, res) {
+
+	console.log("Sign up request received");
+	 res.send("success");
+
+
+
+	 });
 
 	// create todo and send back all todos after creation
 	/*app.post('/api/todos', function(req, res) {
