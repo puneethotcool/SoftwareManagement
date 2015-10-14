@@ -1,6 +1,6 @@
 
 var utility = require('./models/utilities.js');
-
+var loginAuth = require('./models/loginAuth');
 /*var Todo = require('./models/todo');
 
 function getTodos(res){
@@ -18,8 +18,11 @@ function getTodos(res){
 
 module.exports = function(app) {
 
-	// api ---------------------------------------------------------------------
-	// get all todos
+	app.post('/authenticate',function(req,res){
+		console.log("Authenticated called");
+		loginAuth.authenticateUser(req,res);
+	});
+
 	app.get('/api/viewLicense', function(req, res) {
 		console.log("get Request Received");
 	});

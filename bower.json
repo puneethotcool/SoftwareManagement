@@ -13,6 +13,9 @@
     "bootstrap": "~3.3.5",
     "angular": "~1.4.7",
     "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4",
+    "angular-route": "~1.4.7",
+    "angular-cookies": "~1.4.7",
     "angular-messages": "~1.4.7",
     "angular-input-date": "~1.0.4"
   }

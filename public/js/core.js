@@ -4,10 +4,12 @@ var licenseManagementApp = angular.module('licenseManagement', [
 					'licenseControllers',
 					'registration',
                     'issueasset',
+                    'login',
 					'licenseService'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
-		 $urlRouterProvider.otherwise('/viewLicense');
+		 $urlRouterProvider.otherwise('/');
+		 
 		  $stateProvider
 		  .state('viewLicense', {
             url: "/viewLicense",

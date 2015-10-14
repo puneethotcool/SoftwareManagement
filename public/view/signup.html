@@ -1,7 +1,42 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="licenseManagement">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Create Account</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet"  href="/bower_components/bootstrap/dist/css/bootstrap.min.css" ><!-- load bootstrap -->
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
+    <style>
+         .navbar { border-radius:0; }
+    </style>
+   <link rel="stylesheet" type="text/css" href="../styles/calendar.css">
+    <!-- SPELLS -->
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+
+    <script src="../js/controllers/main.js"></script> <!-- load up our controller -->
+    <script src="../js/controllers/signup.js"></script>
+    <!-- load our service -->
+    <script src="../js/services/licenses.js"></script> 
+    <script src="../js/core.js"></script> <!-- load our main application -->
+
+</head>
+
 <script type="text/ng-template" id="error-messages">
     <div ng-message="compareTo" class="messages">Must match the previous entry</div>
 </script>
-
+<body>
+<div class="container">
 <form name="registrationForm" id="registrationForm"  ng-controller="registrationController as registration" novalidate
       ng-submit="registration.submit(registrationForm.$valid)">
     <div class="header">
@@ -77,3 +112,6 @@
         </table>
     </div>
 </form>
+</div>
+</body>
+</html>
