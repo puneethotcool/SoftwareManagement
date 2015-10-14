@@ -3,11 +3,11 @@ var licenseManagementApp = angular.module('licenseManagement', [
 					'ngMessages',
 					'licenseControllers',
 					'registration',
+                    'issueasset',
 					'licenseService'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
 		 $urlRouterProvider.otherwise('/viewLicense');
-
 		  $stateProvider
 		  .state('viewLicense', {
             url: "/viewLicense",
@@ -18,5 +18,10 @@ var licenseManagementApp = angular.module('licenseManagement', [
 		  	url:"/signup",
 		  	templateUrl: 'view/signup.html',
 		  	controller: 'registrationController'
-		  });
+		  })
+              .state('issueLicenses',{
+				  url:"/issueLicenses",
+				  templateUrl: 'view/issueLicense.html',
+				  controller: 'issueLicenseCtrl'
+			  });
 	});

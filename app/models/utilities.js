@@ -39,5 +39,41 @@ module.exports = {
                 }
             });
         });
+    },
+
+    issueLicense : function(userData){
+        var jsonData = JSON.parse(userData.body.mydata);
+        var address='';
+        client.hmget(jsonData.username,['address','privateseed'],function(err,res){
+            console.log('address redis: '+res[0].toString());
+            address = res[0].toString();
+            private = res[1].toString();
+            settings.privateSeed=private;
+            var colu = new Colu(settings);
+            colu.init();
+            colu.on('connect', function () {
+                var asset = {
+                    amount: jsonData.quantity,
+                    issueAddress: address,
+                    address: address,
+                    divisibility: 0,
+                    reissueable: true,
+                    transfer: [{
+                        amount: jsonData.quantity
+                    }],
+                    metadata: {
+                        'assetName': jsonData.software,
+                        'issuer': jsonData.software
+                    },
+                    expiration: jsonData.expirationdate
+                }
+                colu.issueAsset(asset, function (err, body) {
+                    if (err) return console.error(err)
+                    assetId = body.assetId
+                    console.log("Body: ", body)
+                })
+            });
+        });
+        return true;
     }
 }
