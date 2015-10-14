@@ -14,7 +14,7 @@ var licenseManagementApp = angular.module('licenseManagement', [
             templateUrl: 'view/viewLicense.html',
             controller: 'viewLicenseCtrl'
         })
-		  .state('login',{
+		  .state('signUp',{
 		  	url:"/signup",
 		  	templateUrl: 'view/signup.html',
 		  	controller: 'registrationController'

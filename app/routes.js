@@ -1,15 +1,4 @@
-/*var Todo = require('./models/todo');
-
-function getTodos(res){
-	Todo.find(function(err, todos) {
-
-			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
-			if (err)
-				res.send(err)
-
-			res.json(todos); // return all todos in JSON format
-		});
-};*/
+var utility = require('./models/utilities.js');
 
 module.exports = function(app) {
 
@@ -20,12 +9,9 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/signup', function(req, res) {
-
-	console.log("Sign up request received");
-	 res.send("success");
-
-
-
+		console.log("User Sign up request received");
+		utility.signUpUser(req);
+		res.send("User Created");
 	 });
 
 	// create todo and send back all todos after creation

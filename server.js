@@ -5,9 +5,7 @@ var port  	 = process.env.PORT || 8080; 				// set the port
 var morgan   = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var redis = require("redis");
-var crypto = require('crypto');
-var Colu = require('colu');
+
 
 app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
