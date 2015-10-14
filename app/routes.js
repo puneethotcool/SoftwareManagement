@@ -30,6 +30,12 @@ module.exports = function(app) {
 		res.send("User Created");
 	 });
 
+	app.post('/api/issueLicense', function(req, res) {
+		console.log("Issue License request received");
+		utility.issueLicense(req);
+		res.send("License Issued");
+	});
+
 	// create todo and send back all todos after creation
 	/*app.post('/api/todos', function(req, res) {
 
