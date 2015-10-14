@@ -1,3 +1,6 @@
+
+var utility = require('./models/utilities.js');
+
 /*var Todo = require('./models/todo');
 
 function getTodos(res){
@@ -12,6 +15,7 @@ function getTodos(res){
 };*/
 /*Pallav Jain*/
 
+
 module.exports = function(app) {
 
 	// api ---------------------------------------------------------------------
@@ -21,12 +25,9 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/signup', function(req, res) {
-
-	console.log("Sign up request received");
-	 res.send("success");
-
-
-
+		console.log("User Sign up request received");
+		utility.signUpUser(req);
+		res.send("User Created");
 	 });
 
 	// create todo and send back all todos after creation
