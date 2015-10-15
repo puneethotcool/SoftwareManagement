@@ -1,10 +1,10 @@
 angular.module('licenseService', [])
 	// each function returns a promise object
-	.factory('Licenses', ['$http',function($http) {
+	.factory('Licenses', ['$http','$rootScope',function($http,$rootScope) {
 		return {
 			view : function() {
 				console.log('view Licenses called');
-				return $http.get('/api/viewLicense');
+				return $http.get('/api/viewLicense/'+$rootScope.loggedUser);
 			},
 			signUp : function(userData){
 				console.log('sign up user called');

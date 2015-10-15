@@ -3,7 +3,7 @@
  */
 var licenseMgmtApp = angular.module('issueasset', []);
 
-licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','Licenses',function ($scope,Licenses) {
+licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',function ($scope,$rootScope,Licenses) {
     $scope.myForm = {};
     $scope.myForm.software  = "";
     $scope.myForm.quantity = "";
@@ -21,7 +21,7 @@ licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','Licenses',function ($sc
             'software': $scope.myForm.software,
             'quantity': $scope.myForm.quantity,
             'expirationdate': $scope.myForm.expirationDate,
-            'username': 'test'
+            'username': $rootScope.loggedUser
         };
         $scope.myForm.software = "";
         $scope.myForm.quantity = '';

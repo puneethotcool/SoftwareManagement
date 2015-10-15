@@ -60,13 +60,14 @@ module.exports = {
                     issueAddress: address,
                     address: address,
                     divisibility: 0,
-                    reissueable: true,
+                    reissueable: false,
                     transfer: [{
-                        amount: jsonData.quantity
+                        amount: 1  /*jsonData.quantity*/  //Quantity will be 1
                     }],
                     metadata: {
                         'assetName': jsonData.software,
-                        'issuer': jsonData.software
+                        'issuer': jsonData.software,
+                        'expiryDate': jsonData.expirationdate
                     },
                     expiration: jsonData.expirationdate
                 }

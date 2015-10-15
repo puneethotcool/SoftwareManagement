@@ -1,6 +1,7 @@
 
 var utility = require('./models/utilities.js');
 var loginAuth = require('./models/loginAuth');
+var viewLicense = require('./models/viewLicense');
 /*var Todo = require('./models/todo');
 
 function getTodos(res){
@@ -23,8 +24,10 @@ module.exports = function(app) {
 		loginAuth.authenticateUser(req,res);
 	});
 
-	app.get('/api/viewLicense', function(req, res) {
-		console.log("get Request Received");
+	app.get('/api/viewLicense/:username', function(req, res) {
+		console.log("viewLicense request - " + req.params.username);
+		viewLicense.getSoftwareLicenses(req.params.username);
+		
 	});
 
 	app.post('/api/signup', function(req, res) {
@@ -34,7 +37,7 @@ module.exports = function(app) {
 	 });
 
 	app.post('/api/issueLicense', function(req, res) {
-		console.log("Issue License request received");
+		console.log("Issue License request received" + req.body.mydata);
 		utility.issueLicense(req);
 		res.send("License Issued");
 	});

@@ -18,7 +18,7 @@ function url_base64_decode(str) {
   return window.atob(output); //polifyll https://github.com/davidchambers/Base64.js
 }
 
-myApp.controller('loginCtrl', function ($scope, $http, $window) { 
+myApp.controller('loginCtrl', function ($scope, $http, $window,$rootScope) { 
 
   $scope.isAuthenticated = false;
  
@@ -45,6 +45,7 @@ myApp.controller('loginCtrl', function ($scope, $http, $window) {
         var encodedProfile = data.token.split('.')[1];
         var profile = JSON.parse(url_base64_decode(encodedProfile));
         $scope.welcome = 'Welcome ' + profile.first_name + ' ' + profile.last_name;
+        $rootScope.loggedUser = profile.id;
       })
       .error(function (data, status, headers, config) {
         // Erase the token if the user fails to log in

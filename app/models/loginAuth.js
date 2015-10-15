@@ -31,13 +31,14 @@ exports.authenticateUser = function(req, res){
     first_name: 'puneet',
     last_name: 'kumar',
     email: 'puneet@gmail.com',
-    id: 123
+    id: req.body.username
   };
 
   // We are sending the profile inside the token
   var token = jwt.sign(profile, secret, { expiresInMinutes: 60*5 });
 console.log('token' + token);
   res.json({ token: token });
+  
    });
 
 	
