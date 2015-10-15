@@ -5,7 +5,7 @@
                             <a href="/view/signup.html">Create Account</a>
                       </li>
                 </ul>
-                    <div ng-show="error" style="color:red">{{error}}</div>
+                    <div ng-show="loginError" style="color:red">{{loginError}}</div>
                     <form class="navbar-form navbar-right" role="search" ng-submit="login()">
                         <div class="form-group">
                             <input type="text" class="form-control" name="username" placeholder="Username" ng-model="loginForm.username">

@@ -21,6 +21,7 @@ function url_base64_decode(str) {
 myApp.controller('loginCtrl', function ($scope, $http, $window) { 
 
   $scope.isAuthenticated = false;
+ 
   /*$scope.welcome = '';
   $scope.message = '';*/
   $scope.loginForm = {};
@@ -49,14 +50,16 @@ myApp.controller('loginCtrl', function ($scope, $http, $window) {
         // Erase the token if the user fails to log in
         delete $window.sessionStorage.token;
         $scope.isAuthenticated = false;
-
+        $scope.loginError = 'Invalid username or password';
         // Handle login errors here
-        $scope.error = 'Invalid user or password';
+        
       });
   };
 
   $scope.logout = function () {
     $scope.isAuthenticated = false;
+    $scope.loginError = false;
+
     delete $window.sessionStorage.token;
   };
 /*

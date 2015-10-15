@@ -3,8 +3,10 @@
  */
 var redis = require("redis"),
     client = redis.createClient();
-var crypto = require('crypto');
 var Colu = require('colu');
+var commonUtils = require('./commonUtils');
+
+
 
 var settings = {
     network: 'testnet',
@@ -21,10 +23,11 @@ module.exports = {
         var colu = new Colu(settings);
         colu.init();
         colu.on('connect', function () {
-            var hash = crypto
+          /*  var hash = crypto
                 .createHash("md5")
                 .update(jsonData.password)
-                .digest('hex');
+                .digest('hex');*/
+            var hash = commonUtils.encrypt(jsonData.password);
 
             var privateSeed = colu.hdwallet.getPrivateSeed();
             var address = colu.hdwallet.getAddress();
