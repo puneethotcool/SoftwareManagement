@@ -14,7 +14,6 @@ var settings = {
 }
 
 module.exports = {
-
     signUpUser: function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
         settings.privateSeed=null;
@@ -57,7 +56,7 @@ module.exports = {
                     issueAddress: address,
                     address: address,
                     divisibility: 0,
-                    reissueable: true,
+                    reissueable: false,
                     transfer: [{
                         amount: jsonData.quantity
                     }],
