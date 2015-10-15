@@ -41,7 +41,7 @@ myApp.controller('loginCtrl', function ($scope, $http, $window) {
       .success(function (data, status, headers, config) {
         $window.sessionStorage.token = data.token;
         $scope.isAuthenticated = true;
-        var encodedProfile = data.token.split('.')[1];d
+        var encodedProfile = data.token.split('.')[1];
         var profile = JSON.parse(url_base64_decode(encodedProfile));
         $scope.welcome = 'Welcome ' + profile.first_name + ' ' + profile.last_name;
       })
