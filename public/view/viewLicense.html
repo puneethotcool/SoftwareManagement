@@ -1,1 +1,17 @@
-<h3>view License</h3>
+
+<h3>view license </h3>
+<table class="table table-striped">
+	<thead>
+      <tr>
+        <th>Software Name</th>
+        <th>Issuer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    	<tr ng-repeat="asset in assetData">
+    		<td>{{asset.metadataOfIssuence.data.assetName}}</td>
+    		<td>{{asset.metadataOfIssuence.data.issuer}}</td>
+    	</tr>
+    </tbody>
+</table> 
