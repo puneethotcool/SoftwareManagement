@@ -16,7 +16,6 @@ var settings = {
 }
 
 module.exports = {
-
     signUpUser: function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
         settings.privateSeed=null;
