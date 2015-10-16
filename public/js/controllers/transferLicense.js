@@ -1,7 +1,14 @@
 
     var app = angular.module('transferLicense', ['ngMessages']);
 
-    app.controller('transferLicenseController', ['$http','Licenses' ,'$rootScope',function( $http,Licenses,$rootScope) {
+    app.controller('transferLicenseController', ['$scope','$http','Licenses' ,'$rootScope',function( $scope,$http,Licenses,$rootScope) {
+
+         Licenses.view()
+            .success(function(data) {
+                console.log('data: '+ JSON.stringify(data));
+                $scope.assetData = data;
+            });
+
         alert($rootScope.loggedUser);
         var model = this;
 

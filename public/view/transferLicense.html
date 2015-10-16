@@ -2,6 +2,32 @@
     <div ng-message="compareTo" class="messages">Must match the previous entry</div>
 </script>
 
+
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Software Name</th>
+        <th>Company</th>
+          <th>Expiry Date</th>
+          <th>Version</th>
+          <th>License Key</th>
+          <th>Transfer To</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="asset in assetData">
+            <td>{{asset.metadataOfIssuence.data.assetName}}</td>
+            <td>{{asset.metadataOfIssuence.data.companyName}}</td>
+            <td>{{asset.metadataOfIssuence.data.expiryDate}}</td>
+            <td>{{asset.metadataOfIssuence.data.version}}</td>
+            <td>{{asset.metadataOfIssuence.data.key}}</td>
+            <td><input type="text" name="toId" class="transfer" ng-model="transferLicense.transfer.toId"></td>
+            <td><button type="button" class="btn btn-primary" >Transfer</button></td>
+        </tr>
+    </tbody>
+</table> 
+
 <form name="transferForm" id="transferForm"  ng-controller="transferLicenseController as transferLicense" novalidate
       ng-submit="transferLicense.submit(transferForm.$valid)">
    <!-- <div class="form-group">
@@ -17,5 +43,6 @@
         <input type="text" name="assetId" class="transfer" ng-model="transferLicense.transfer.assetId">
         <p>Enter Asset Id</p>
     </div>
+   <!-- <li><a ui-sref="viewLicense">My Wallet</a></li>-->
      <input type="submit" name="Transfer" id="submitbutton" align="center" value="Transfer">
 </form>
