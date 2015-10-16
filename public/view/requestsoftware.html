@@ -1,0 +1,49 @@
+<form name="requestAsset" id="requestAsset" ng-controller="requestLicenseCtrl" ng-submit="submit()">
+    <div class="header">
+    <h3>Request Asset</h3>
+        </div>
+    <div class="sep"></div>
+
+
+    <div class="inputs">
+
+    <table>
+        <tr class="spaceUnder">
+            <td>
+    <label>Software </label>
+            </td>
+            <td width="50"></td>
+            <td>
+                <select ng-model="myForm.software"
+                        ng-options="obj.id as obj.name for obj in myForm.options">
+                    <!--<option ng-repeat="software in softwares"  value={{software.name}}>{{software.name}}</option>-->
+                    <option value="">Select Software</option>
+                </select>
+            </td>
+        </tr>
+
+       
+        <tr class="spaceUnder">
+            <td>
+                <label>Required Till Date</label>
+            </td>
+            <td width="50"></td>
+            <td>
+                <div class="form-group">
+                    <div class="control">
+                        <input id="date-birth" class="form-control" type="date" ng-model="myForm.requestEndDate" ng-required="true">
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+        <table>
+            <tr>
+                <td align="center" width="406px">
+<input type="submit" name="Request Asset" id="submitbutton" align="center" value="Request Asset">
+                </td>
+            </tr>
+        </table>
+</div>
+</form>

@@ -24,6 +24,12 @@ module.exports = function(app) {
 		loginAuth.authenticateUser(req,res);
 	});
 
+	app.post('/api/requestLicense', function(req, res) {
+		console.log("Request License request received" + req.body.mydata);
+		utility.requestLicense(req);
+		res.send("License requested");
+	});
+
 	app.get('/api/viewLicense/:username', function(req, res) {
 		console.log("viewLicense request - " + req.params.username);
 		viewLicense.getSoftwareLicenses(req.params.username,function(allAssets){

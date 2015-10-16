@@ -5,7 +5,8 @@ var licenseManagementApp = angular.module('licenseManagement', [
 					'registration',
                     'issueasset',
                     'login',
-					'licenseService'
+					'licenseService',
+					'requestasset'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
 		 $urlRouterProvider.otherwise('/');
@@ -25,5 +26,10 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  url:"/issueLicenses",
 				  templateUrl: 'view/issueLicense.html',
 				  controller: 'issueLicenseCtrl'
+			  })
+			  .state('requestLicense',{
+				  url:"/requestLicense",
+				  templateUrl: 'view/requestsoftware.html',
+				  controller: 'requestLicenseCtrl'
 			  });
 	});

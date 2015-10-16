@@ -43,6 +43,45 @@ module.exports = {
         });
     },
 
+    requestLicense : function(userData){
+        var jsonData = JSON.parse(userData.body.mydata);
+        settings.privateSeed=null;
+        /*var colu = new Colu(settings);
+         colu.init();
+         colu.on('connect', function () {
+         var hash = crypto
+         .createHash("md5")
+         .update(jsonData.password)
+         .digest('hex'); */
+
+        /* var privateSeed = colu.hdwallet.getPrivateSeed();
+         var address = colu.hdwallet.getAddress();*/
+        // var userId = $scope.loginForm.username;
+        /* console.log("privateseed:" + privateSeed);
+         console.log("address:" + address);*/
+        // console.log("userId:" + userId);
+        var status ='Pending';
+        client.hmset(jsonData.username, 'Software', jsonData.software, 'requestEndDate', jsonData.requestEndDate, 'status',status ,function (error, result) {
+            if (error) {
+                return false;
+                console.log('False Test')
+            }
+            else {
+
+                console.log('true')
+                client.hmget(jsonData.username, 'software',function(err,res){
+                    console.log('value recieved'+ res[0]);
+                });
+                return true;
+            }
+        });
+        // return true;
+
+
+        // }
+
+    },
+
     issueLicense : function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
         var address='';
