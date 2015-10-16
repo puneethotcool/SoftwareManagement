@@ -25,6 +25,17 @@ angular.module('licenseService', [])
 					data:  userData ,
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
+			},
+
+			requestLicense : function(userData){
+				console.log('request license called');
+				console.log('DATA: '+userData);
+				return  $http({ // Accessing the Angular $http Service to send data via REST Communication to Node Server.
+					method: 'POST',
+					url: '/api/requestLicense',
+					data:  userData ,
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				})
 			}
 		}
 	}]);

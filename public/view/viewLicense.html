@@ -4,14 +4,20 @@
 	<thead>
       <tr>
         <th>Software Name</th>
-        <th>Issuer</th>
+        <th>Company</th>
+          <th>Expiry Date</th>
+          <th>Version</th>
+          <th>License Key</th>
       </tr>
     </thead>
 
     <tbody>
     	<tr ng-repeat="asset in assetData">
     		<td>{{asset.metadataOfIssuence.data.assetName}}</td>
-    		<td>{{asset.metadataOfIssuence.data.issuer}}</td>
+    		<td>{{asset.metadataOfIssuence.data.companyName}}</td>
+            <td>{{asset.metadataOfIssuence.data.expiryDate}}</td>
+            <td>{{asset.metadataOfIssuence.data.version}}</td>
+            <td>{{asset.metadataOfIssuence.data.key}}</td>
     	</tr>
     </tbody>
 </table> 
