@@ -45,6 +45,15 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/api/viewMyPendingRequests/:username', function(req, res) {
+		console.log("viewMyRequests request - " + req.params.username);
+		utility.viewMyPendingRequests(req.params.username,function(myTasks){
+			res.send(myTasks);
+		});
+	});
+
+	
+
 	app.post('/api/signup', function(req, res) {
 		console.log("User Sign up request received" );
 		utility.signUpUser(req);

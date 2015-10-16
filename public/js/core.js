@@ -8,7 +8,8 @@ var licenseManagementApp = angular.module('licenseManagement', [
 					'licenseService',
 					'requestasset',
 					'reviewTasks',
-					'transferLicense'
+					'transferLicense',
+					'pendingRequest'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
 		 $urlRouterProvider.otherwise('/');
@@ -40,6 +41,13 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  templateUrl: 'view/taskList.html',
 				  controller: 'taskListCtrl'
 			  })
+
+			   .state('pendingRequest',{
+				  url:"/pendingRequest",
+				  templateUrl: 'view/pendingRequest.html',
+				  controller: 'pendingRequestCtrl'
+			  })
+
 
 			  .state('transferLicense',{
 		  	url:"/transferLicense",

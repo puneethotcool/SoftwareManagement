@@ -1,0 +1,19 @@
+<h3>Pending Requests</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Software Name</th>
+        <th>Software Required Date</th>
+        <th>Request Status</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="request in reviewpendingRequestData">
+        <td>{{request.software}}</td>
+        <td>{{request.requestEndDate}}</td>
+        <td>{{request.status}}</td>
+
+    </tr>
+    </tbody>
+</table>

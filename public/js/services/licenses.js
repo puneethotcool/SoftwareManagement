@@ -33,6 +33,11 @@ angular.module('licenseService', [])
 				console.log('view RequestList called');
 				return $http.get('/api/viewMyRequests/' + $rootScope.loggedUser);
 			},
+
+			viewpendingRequestList : function() {
+				console.log('view Penidng RequestList called');
+				return $http.get('/api/viewMyPendingRequests/' + $rootScope.loggedUser);
+			},
 			transfer : function(userData){
 				console.log('Transferring Asset');
 				//return $http.post('/api/signup', userData);
