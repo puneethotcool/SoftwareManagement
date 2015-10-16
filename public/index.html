@@ -53,7 +53,8 @@
         </div>
         <center>
             <section ng-include="'view/login-header.html'" data-ng-show="!isAuthenticated"></section>
-            <section ng-include="'view/home-header.html'" data-ng-show="isAuthenticated"></section>
+            <section ng-include="'view/home-header.html'" data-ng-show="isAuthenticated && !isAdminUser"></section>
+            <section ng-include="'view/admin-header.html'" data-ng-show="isAuthenticated && isAdminUser"></section>
         </center>
     </div>
 </div>

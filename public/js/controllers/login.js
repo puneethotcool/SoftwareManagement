@@ -44,8 +44,8 @@ myApp.controller('loginCtrl', function ($scope, $http, $window,$rootScope) {
         $scope.isAuthenticated = true;
         var encodedProfile = data.token.split('.')[1];
         var profile = JSON.parse(url_base64_decode(encodedProfile));
-        $scope.welcome = 'Welcome ' + profile.first_name + ' ' + profile.last_name;
-        $rootScope.loggedUser = profile.id;
+        setuserProfile(profile);
+
       })
       .error(function (data, status, headers, config) {
         // Erase the token if the user fails to log in
@@ -56,6 +56,12 @@ myApp.controller('loginCtrl', function ($scope, $http, $window,$rootScope) {
         
       });
   };
+
+  setuserProfile = function(profile){
+        $scope.welcome = 'Welcome ' + profile.first_name + ' ' + profile.last_name;
+        $rootScope.loggedUser = profile.id;
+        $rootScope.isAdminUser = ($rootScope.loggedUser == "admin");
+  }
 
   $scope.logout = function () {
     $scope.isAuthenticated = false;
