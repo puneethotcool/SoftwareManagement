@@ -21,7 +21,8 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
         var formData = {
             'software': $scope.myForm.software,
             'requestEndDate': $scope.myForm.requestEndDate,
-            'username': $rootScope.loggedUser
+            'username': $rootScope.loggedUser,
+            'status':'pending'
         };
         $scope.myForm.software = "";
         $scope.myForm.requestEndDate = '';

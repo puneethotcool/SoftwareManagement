@@ -38,10 +38,17 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/api/viewMyRequests/:username', function(req, res) {
+		console.log("viewMyRequests request - " + req.params.username);
+		utility.myPendingTasks(req.params.username,function(myTasks){
+			res.send(myTasks);
+		});
+	});
+
 	app.post('/api/signup', function(req, res) {
-		console.log("User Sign up request received");
+		console.log("User Sign up request received" );
 		utility.signUpUser(req);
-		res.send("User Created");
+		res.send("User Created Successfully. Click ok to login");
 	 });
 
 	app.post('/api/issueLicense', function(req, res) {

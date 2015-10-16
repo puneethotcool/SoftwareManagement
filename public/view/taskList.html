@@ -1,0 +1,19 @@
+<h3>My Tasks</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Software Name</th>
+        <th>Usage End Date</th>
+        <th>Requestor</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="request in reviewTaskData">
+        <td>{{request.software}}</td>
+        <td>{{request.requestEndDate}}</td>
+        <td>{{request.username}}</td>
+
+    </tr>
+    </tbody>
+</table>

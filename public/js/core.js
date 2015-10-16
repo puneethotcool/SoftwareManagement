@@ -7,6 +7,7 @@ var licenseManagementApp = angular.module('licenseManagement', [
                     'login',
 					'licenseService',
 					'requestasset',
+					'reviewTasks',
 					'transferLicense'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
@@ -18,11 +19,11 @@ var licenseManagementApp = angular.module('licenseManagement', [
             templateUrl: 'view/viewLicense.html',
             controller: 'viewLicenseCtrl'
         })
-		  .state('signUp',{
+		  /*.state('signUp',{
 		  	url:"/signup",
 		  	templateUrl: 'view/signup.html',
 		  	controller: 'registrationController'
-		  })
+		  })*/
               .state('issueLicenses',{
 				  url:"/issueLicenses",
 				  templateUrl: 'view/issueLicense.html',
@@ -33,9 +34,16 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  templateUrl: 'view/requestsoftware.html',
 				  controller: 'requestLicenseCtrl'
 			  })
+
+			  .state('taskList',{
+				  url:"/taskList",
+				  templateUrl: 'view/taskList.html',
+				  controller: 'taskListCtrl'
+			  })
+
 			  .state('transferLicense',{
 		  	url:"/transferLicense",
 		  	templateUrl: 'view/transferLicense.html',
 		  	controller: 'transferLicenseController'
-		  });;
+		  });
 	});
