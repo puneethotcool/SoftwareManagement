@@ -5,6 +5,7 @@ var redis = require("redis"),
     client = redis.createClient();
 var Colu = require('colu');
 var commonUtils = require('./commonUtils');
+var blockchain = require('./api/blockchain');
 
 
 
@@ -14,6 +15,29 @@ var settings = {
     coloredCoinsHost: 'https://testnet.api.coloredcoins.org',
     coluHost: 'https://testnet.engine.colu.co'
 }
+
+getAddressFromDB = function(id,callback){
+    client.hmget(id,['address'],function(err,response){
+    if(!response[0]) {
+        res.status(401).send('User Not Registered');
+          return;
+       }
+       callback(response[0]);
+       // console.log("From Redis" , fromAddress);
+  });
+}
+
+getPrivateSeedFromDB = function(id,callback){
+    client.hmget(id,['privateseed'],function(err,response){
+    if(!response[0]) {
+        res.status(401).send('User Not Registered');
+          return;
+       }
+       callback(response[0]);
+       // console.log("From Redis" , fromAddress);
+  });
+}
+
 
 module.exports = {
     signUpUser: function(userData){
@@ -106,5 +130,29 @@ module.exports = {
             });
         });
         return true;
-    }
+    },
+
+     transferLicense : function(userData){
+
+    //alert(userData);
+ 
+  var jsonData = JSON.parse(userData.body.mydata);
+  var fromId = jsonData.fromId;
+  var toId = jsonData.toId;
+ 
+getAddressFromDB(fromId,function(fromAddress){
+  console.log('fromAddress '+ fromAddress);
+  getPrivateSeedFromDB(fromId,function(privateSeed){
+    console.log('Private Seed '+ privateSeed);
+  getAddressFromDB(toId,function(toAddress){
+      console.log('toAddress '+ toAddress);
+    blockchain.transferAssets(fromAddress,toAddress,privateSeed,jsonData.assetId,function(msg){
+          console.log(msg);
+      });
+    });
+
+  });
+});
+    return true;
+}
 }

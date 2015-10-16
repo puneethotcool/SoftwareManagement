@@ -1,5 +1,5 @@
-var app = angular.module('registration', ['ngMessages']);
-app.controller('registrationController', ['$http','Licenses' ,function( $http,Licenses) {
+var app = angular.module('registration', ['ngMessages','loginService']);
+app.controller('registrationController', ['$http','$window','loginServ' ,function( $http,$window,loginServ) {
     var model = this;
     model.message = "";
     model.user = {
@@ -25,8 +25,9 @@ app.controller('registrationController', ['$http','Licenses' ,function( $http,Li
                     department:""
                 };
                var jdata = 'mydata='+JSON.stringify(formData);
-                Licenses.signUp(jdata).success(function(response){
+                loginServ.signUp(jdata).success(function(response){
                     alert(response);
+                    $window.location.href = "/";
                 });
                 return true;
             } else {

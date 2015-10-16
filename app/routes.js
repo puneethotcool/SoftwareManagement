@@ -46,15 +46,22 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/signup', function(req, res) {
-		console.log("User Sign up request received");
+		console.log("User Sign up request received" );
 		utility.signUpUser(req);
-		res.send("User Created");
+		res.send("User Created Successfully. Click ok to login");
 	 });
 
 	app.post('/api/issueLicense', function(req, res) {
 		console.log("Issue License request received" + req.body.mydata);
 		utility.issueLicense(req);
 		res.send("License Issued");
+	});
+
+	app.post('/api/transfer', function(req, res) {
+	console.log("Transfer Request received");
+	console.log(req);
+	utility.transferLicense(req);
+	res.send("Transfer Completed");
 	});
 
 	// create todo and send back all todos after creation
