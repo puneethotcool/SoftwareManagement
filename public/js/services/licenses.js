@@ -36,6 +36,11 @@ angular.module('licenseService', [])
 					data:  userData ,
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
+			},
+
+			viewRequestList : function() {
+				console.log('view RequestList called');
+				return $http.get('/api/viewMyRequests/'+$rootScope.loggedUser);
 			}
 		}
 	}]);

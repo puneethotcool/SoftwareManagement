@@ -46,40 +46,26 @@ module.exports = {
     requestLicense : function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
         settings.privateSeed=null;
-        /*var colu = new Colu(settings);
-         colu.init();
-         colu.on('connect', function () {
-         var hash = crypto
-         .createHash("md5")
-         .update(jsonData.password)
-         .digest('hex'); */
 
-        /* var privateSeed = colu.hdwallet.getPrivateSeed();
-         var address = colu.hdwallet.getAddress();*/
-        // var userId = $scope.loginForm.username;
-        /* console.log("privateseed:" + privateSeed);
-         console.log("address:" + address);*/
-        // console.log("userId:" + userId);
         var status ='Pending';
-        client.hmset(jsonData.username, 'Software', jsonData.software, 'requestEndDate', jsonData.requestEndDate, 'status',status ,function (error, result) {
-            if (error) {
-                return false;
-                console.log('False Test')
-            }
-            else {
+        var userRequest = [];
+        userRequest.push(userData.body.mydata);
+        client.rpush('SoftwareRequest', userRequest);
+    },
 
-                console.log('true')
-                client.hmget(jsonData.username, 'software',function(err,res){
-                    console.log('value recieved'+ res[0]);
-                });
-                return true;
+    myPendingTasks : function(userName,callback){
+        //var jsonData = JSON.parse(userData.body.mydata);
+        var requests = client.lrange('SoftwareRequest',0,-1,function(err,res){
+            var resonseArray = [];
+            for(var i in res){
+                resonseArray.push(JSON.parse(res[i]));
+
             }
+            console.log('request: '+ resonseArray);
+            return callback(resonseArray);
+
         });
-        // return true;
-
-
-        // }
-
+        console.log('requests: '+ requests);
     },
 
     issueLicense : function(userData){
