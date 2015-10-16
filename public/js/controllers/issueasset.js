@@ -9,11 +9,14 @@ licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',
     $scope.myForm.quantity = "";
     $scope.myForm.expirationDate = "";
     $scope.myForm.output="";
+    $scope.myForm.key = "";
+    $scope.myForm.companyName = "";
+    $scope.myForm.version='';
 
     $scope.myForm.options = [
-        { id : "rad", name: "Rational Application Developer" }
-        ,{ id : "parasoft", name: "Parasoft" }
-        ,{ id : "altovaXMLSpy"  , name: "Altova  XMLSpy" }
+        { id : "Rational Application Developer", name: "Rational Application Developer" }
+        ,{ id : "Parasoft", name: "Parasoft" }
+        ,{ id : "Altova  XMLSpy"  , name: "Altova  XMLSpy" }
     ];
     // Preparing the Json Data from the Angular Model to send in the Server.
     $scope.submit=function() {
@@ -21,11 +24,17 @@ licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',
             'software': $scope.myForm.software,
             'quantity': $scope.myForm.quantity,
             'expirationdate': $scope.myForm.expirationDate,
-            'username': $rootScope.loggedUser
+            'username': $rootScope.loggedUser,
+            'key':$scope.myForm.key,
+            'companyName':$scope.myForm.companyName,
+            'version':$scope.myForm.version
         };
         $scope.myForm.software = "";
         $scope.myForm.quantity = '';
         $scope.myForm.expirationDate = '';
+        $scope.myForm.key = "";
+        $scope.myForm.companyName = "";
+        $scope.myForm.version='';
         var jdata = 'mydata=' + JSON.stringify(formData);
         Licenses.issueLicense(jdata).success(function (response) {
             alert(response);

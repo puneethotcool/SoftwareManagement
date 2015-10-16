@@ -66,7 +66,10 @@ module.exports = {
                     metadata: {
                         'assetName': jsonData.software,
                         'issuer': jsonData.software,
-                        'expiryDate': jsonData.expirationdate
+                        'expiryDate': jsonData.expirationdate,
+                        'key':jsonData.key,
+                        'companyName':jsonData.companyName,
+                        'version':jsonData.version
                     },
                     expiration: jsonData.expirationdate
                 }
