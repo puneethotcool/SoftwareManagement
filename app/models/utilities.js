@@ -61,7 +61,7 @@ module.exports = {
                     divisibility: 0,
                     reissueable: false,
                     transfer: [{
-                        amount: 1  /*jsonData.quantity*/  //Quantity will be 1
+                        amount: jsonData.quantity  //Quantity will be 1
                     }],
                     metadata: {
                         'assetName': jsonData.software,

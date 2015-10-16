@@ -26,8 +26,10 @@ module.exports = function(app) {
 
 	app.get('/api/viewLicense/:username', function(req, res) {
 		console.log("viewLicense request - " + req.params.username);
-		viewLicense.getSoftwareLicenses(req.params.username);
-		
+		viewLicense.getSoftwareLicenses(req.params.username,function(allAssets){
+			console.log('All assets' + JSON.stringify(allAssets));
+			res.send(allAssets);
+		});
 	});
 
 	app.post('/api/signup', function(req, res) {

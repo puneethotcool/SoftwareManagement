@@ -11,7 +11,7 @@ exports.queryAssets = function(address,callback){
             if (typeof body === 'string') {
                 licenseList = JSON.parse(body)
             }
-            callback(licenseList);
+            return callback(licenseList);
         });
 }
 
@@ -22,6 +22,6 @@ exports.queryAssetMetaData = function(assetId,transactionId,index,callback){
         if (typeof body === 'string') {
             assetMetaData = JSON.parse(body)
         }
-         callback(assetMetaData);
+         return callback(assetMetaData);
     });
 }

@@ -4,8 +4,8 @@ angular.module('licenseControllers', [])
 
 		Licenses.view()
 			.success(function(data) {
-				$scope.todos = data;
-				$scope.loading = false;
+				console.log('data: '+ JSON.stringify(data));
+				$scope.assetData = data;
 			});
 
 
