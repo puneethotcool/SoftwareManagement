@@ -50,6 +50,13 @@ module.exports = function(app) {
 		res.send("License Issued");
 	});
 
+	app.post('/api/transfer', function(req, res) {
+	console.log("Transfer Request received");
+	console.log(req);
+	utility.transferLicense(req);
+	res.send("Transfer Completed");
+	});
+
 	// create todo and send back all todos after creation
 	/*app.post('/api/todos', function(req, res) {
 

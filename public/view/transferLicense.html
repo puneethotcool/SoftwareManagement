@@ -1,0 +1,21 @@
+<script type="text/ng-template" id="error-messages">
+    <div ng-message="compareTo" class="messages">Must match the previous entry</div>
+</script>
+
+<form name="transferForm" id="transferForm"  ng-controller="transferLicenseController as transferLicense" novalidate
+      ng-submit="transferLicense.submit(transferForm.$valid)">
+   <!-- <div class="form-group">
+        <label>From Id</label>
+        <input type="text" ng-required="true" name="fromId" class="transfer" ng-model="transferLicense.transfer.fromId">        
+    </div>-->
+    <div class="form-group">
+        <label>To Id</label>
+        <input type="text" name="toId" class="transfer" ng-model="transferLicense.transfer.toId">    
+    </div>
+    <div class="form-group">
+        <label>Asset Id</label>
+        <input type="text" name="assetId" class="transfer" ng-model="transferLicense.transfer.assetId">
+        <p>Enter Asset Id</p>
+    </div>
+     <input type="submit" name="Transfer" id="submitbutton" align="center" value="Transfer">
+</form>

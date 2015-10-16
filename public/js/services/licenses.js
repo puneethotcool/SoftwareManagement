@@ -36,6 +36,17 @@ angular.module('licenseService', [])
 					data:  userData ,
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
+			},
+
+			transfer : function(userData){
+				console.log('Transferring Asset');
+				//return $http.post('/api/signup', userData);
+				return  $http({ // Accessing the Angular $http Service to send data via REST Communication to Node Server.
+					method: 'POST',
+					url: '/api/transfer',
+					data:  userData ,
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+				})
 			}
 		}
 	}]);

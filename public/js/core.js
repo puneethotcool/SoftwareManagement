@@ -6,7 +6,8 @@ var licenseManagementApp = angular.module('licenseManagement', [
                     'issueasset',
                     'login',
 					'licenseService',
-					'requestasset'
+					'requestasset',
+					'transferLicense'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
 		 $urlRouterProvider.otherwise('/');
@@ -31,5 +32,10 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  url:"/requestLicense",
 				  templateUrl: 'view/requestsoftware.html',
 				  controller: 'requestLicenseCtrl'
-			  });
+			  })
+			  .state('transferLicense',{
+		  	url:"/transferLicense",
+		  	templateUrl: 'view/transferLicense.html',
+		  	controller: 'transferLicenseController'
+		  });;
 	});
