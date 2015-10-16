@@ -18,11 +18,11 @@ var licenseManagementApp = angular.module('licenseManagement', [
             templateUrl: 'view/viewLicense.html',
             controller: 'viewLicenseCtrl'
         })
-		  .state('signUp',{
+		  /*.state('signUp',{
 		  	url:"/signup",
 		  	templateUrl: 'view/signup.html',
 		  	controller: 'registrationController'
-		  })
+		  })*/
               .state('issueLicenses',{
 				  url:"/issueLicenses",
 				  templateUrl: 'view/issueLicense.html',

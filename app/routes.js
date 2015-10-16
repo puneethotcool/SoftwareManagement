@@ -39,9 +39,9 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/signup', function(req, res) {
-		console.log("User Sign up request received");
+		console.log("User Sign up request received" );
 		utility.signUpUser(req);
-		res.send("User Created");
+		res.send("User Created Successfully. Click ok to login");
 	 });
 
 	app.post('/api/issueLicense', function(req, res) {
