@@ -26,6 +26,7 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
     $scope.myForm.requestEndDate = "";
     $scope.myForm.output="";
 
+
     Licenses.getSoftwareList()
         .success(function(data) {
             console.log(data);
@@ -39,13 +40,16 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
         ,{ id : "altovaXMLSpy"  , name: "Altova  XMLSpy" }
     ];*/
 
+
+   
     // Preparing the Json Data from the Angular Model to send in the Server.
     $scope.submit=function() {
         var formData = {
             'software': $scope.myForm.software,
             'requestEndDate': $scope.myForm.requestEndDate,
             'username': $rootScope.loggedUser,
-            'status':'pending'
+            'status':'pending',
+            'id': (new Date).getTime()
         };
         $scope.myForm.software = "";
         $scope.myForm.requestEndDate = '';

@@ -9,7 +9,7 @@
                 $scope.assetData = data;
             });
 
-        alert($rootScope.loggedUser);
+        // alert($rootScope.loggedUser);
         var model = this;
 
         model.message = "";
@@ -41,9 +41,7 @@ model.message = "Made some progress";
                     
                 };
                var jdata = 'mydata='+JSON.stringify(formData);
-               alert(jdata);
                 Licenses.transfer(jdata).success(function(response){
-                    alert(response);
                 });
                 return true;
             } else {

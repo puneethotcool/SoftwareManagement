@@ -13,7 +13,9 @@
         <td>{{request.software}}</td>
         <td>{{request.requestEndDate}}</td>
         <td>{{request.username}}</td>
-
+        <td><button type="button" class="btn btn-success" ng-click="processTransfer(request)" 
+            ng-controller="processTransferCtrl">Process</button></td>
+        <td><button type="button" class="btn btn-danger">Reject</button></td>
     </tr>
     </tbody>
 </table>
