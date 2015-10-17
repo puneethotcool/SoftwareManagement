@@ -42,6 +42,10 @@ licenseMgmtApp.controller('processTransferCtrl', ['$scope','$rootScope','License
 
   }
 
+  $scope.rejectLicenseRequest = function(request){
+      Licenses.rejectLicenseRequest(request.id);
+  }
+
   $scope.processTransfer = function(request){
      $scope.requestedLicense = {};
      $scope.requestedLicense.softwareName = request.software;
