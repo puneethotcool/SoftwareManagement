@@ -17,6 +17,7 @@
     "angular-route": "~1.4.7",
     "angular-cookies": "~1.4.7",
     "angular-messages": "~1.4.7",
-    "angular-input-date": "~1.0.4"
+    "angular-input-date": "~1.0.4",
+    "ng-dialog": "~0.5.5"
   }
 }

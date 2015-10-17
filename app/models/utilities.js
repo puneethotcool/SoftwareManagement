@@ -6,6 +6,7 @@ var redis = require("redis"),
 var Colu = require('colu');
 var commonUtils = require('./commonUtils');
 var blockchain = require('./api/blockchain');
+var dbUtils = require('./dbUtils');
 
 
 
@@ -16,27 +17,10 @@ var settings = {
     coluHost: 'https://testnet.engine.colu.co'
 }
 
-getAddressFromDB = function(id,callback){
-    client.hmget(id,['address'],function(err,response){
-    if(!response[0]) {
-        res.status(401).send('User Not Registered');
-          return;
-       }
-       callback(response[0]);
-       // console.log("From Redis" , fromAddress);
-  });
-}
 
-getPrivateSeedFromDB = function(id,callback){
-    client.hmget(id,['privateseed'],function(err,response){
-    if(!response[0]) {
-        res.status(401).send('User Not Registered');
-          return;
-       }
-       callback(response[0]);
-       // console.log("From Redis" , fromAddress);
-  });
-}
+
+
+
 
 
 module.exports = {
@@ -69,7 +53,7 @@ module.exports = {
 
     requestLicense : function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
-        settings.privateSeed=null;
+        // settings.privateSeed=null;
 
         var status ='Pending';
         var userRequest = [];
@@ -151,27 +135,37 @@ module.exports = {
         return true;
     },
 
-     transferLicense : function(userData){
+transferLicense : function(userdata){
 
-    //alert(userData);
+    var jsonData = JSON.parse(userdata.body.mydata);
+
+   console.log('transferLicense '+ jsonData.fromId +' '+jsonData.toId +' '+jsonData.assetId);
  
-  var jsonData = JSON.parse(userData.body.mydata);
-  var fromId = jsonData.fromId;
-  var toId = jsonData.toId;
- 
-getAddressFromDB(fromId,function(fromAddress){
-  console.log('fromAddress '+ fromAddress);
-  getPrivateSeedFromDB(fromId,function(privateSeed){
-    console.log('Private Seed '+ privateSeed);
-  getAddressFromDB(toId,function(toAddress){
-      console.log('toAddress '+ toAddress);
-    blockchain.transferAssets(fromAddress,toAddress,privateSeed,jsonData.assetId,function(msg){
-          console.log(msg);
+    dbUtils.getAddressFromDB(jsonData.fromId,function(fromErr,fromAddress){
+        console.log('fromAddress '+ fromAddress);
+        if(fromErr) return console.log('Error Fetching From getAddressFromDB');
+    // if(err) return res.status(401).send('Error Fetching From getAddressFromDB');
+    
+      dbUtils.getPrivateSeedFromDB(jsonData.fromId,function(err,privateSeed){
+        console.log('Private Seed '+ privateSeed);
+
+          dbUtils.getAddressFromDB(jsonData.toId,function(err,toAddress){
+              console.log('toAddress '+ toAddress);
+            blockchain.transferAssets(fromAddress,toAddress,privateSeed,jsonData.assetId,function(msg){
+                  console.log(msg);
+                  if(!msg.error){
+                    //Successfully transfered update the status
+                       dbUtils.updateSoftwareRequestedWithSucess(jsonData.requestRecordId,function(err,res){
+                           return res;
+                    });
+                  }
+                  return true;
+              });
+            });
+
       });
-    });
-
-  });
 });
-    return true;
+
+
 }
 }

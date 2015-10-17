@@ -36,18 +36,18 @@ exports.transferAssets = function(fromAddress,toAddress,privateSeed,assetId,call
         coluHost: 'https://testnet.engine.colu.co'
     }
     var colu = new Colu(settings);
-    var phoneNumber = '+1234567890';
+    // var phoneNumber = '+1234567890';
     var send = {
     from: [fromAddress],
     to: [{
         address: toAddress,
         assetId: assetId,
         amount: 1
-    },{
-        phoneNumber: phoneNumber,
+    }/*,{
+        // phoneNumber: phoneNumber,
         assetId: assetId,
         amount: 1
-    }],
+    }*/],
     metadata: {        
         'assetName': '1 Ticket to see the Chicago Musical on 1/1/2016 at 8 PM',
         'issuer': 'Ticket booth on Times Square',

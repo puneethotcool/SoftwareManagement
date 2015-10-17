@@ -82,6 +82,7 @@ myApp.controller('loginCtrl', function ($scope, $http, $window,$rootScope) {
 */
 });
 
+//Commenting for testing puropose only below code --PUNEET
 myApp.factory('authInterceptor', function ($rootScope, $q, $window) {
   return {
     request: function (config) {

@@ -1,5 +1,6 @@
 var licenseManagementApp = angular.module('licenseManagement', [
 					'ui.router',
+					'ngDialog',
 					'ngMessages',
 					'licenseControllers',
 					'registration',

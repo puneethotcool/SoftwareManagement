@@ -10,9 +10,9 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
     $scope.myForm.output="";
 
     $scope.myForm.options = [
-        { id : "rad", name: "Rational Application Developer" }
-        ,{ id : "parasoft", name: "Parasoft" }
-        ,{ id : "altovaXMLSpy"  , name: "Altova  XMLSpy" }
+        { id : "Rational Application Developer", name: "Rational Application Developer" }
+        ,{ id : "Parasoft", name: "Parasoft" }
+        ,{ id : "Altova  XMLSpy"  , name: "Altova  XMLSpy" }
     ];
     //console.log('HERE');
    // console.log('$scope.myForm.software');
@@ -22,7 +22,8 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
             'software': $scope.myForm.software,
             'requestEndDate': $scope.myForm.requestEndDate,
             'username': $rootScope.loggedUser,
-            'status':'pending'
+            'status':'pending',
+            'id': (new Date).getTime()
         };
         $scope.myForm.software = "";
         $scope.myForm.requestEndDate = '';
