@@ -1,20 +1,52 @@
-<form name="createAsset" id="createAsset" ng-controller="issueLicenseCtrl" ng-submit="submit()">
-    <div class="header">
-    <h3>Create Asset</h3>
-        </div>
-    <div class="sep"></div>
+ <!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="registration">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Create Account</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet"  href="/bower_components/bootstrap/dist/css/bootstrap.min.css" ><!-- load bootstrap -->
+    <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> -->
+    <style>
+         .navbar { border-radius:0; }
+    </style>
+   <link rel="stylesheet" type="text/css" href="../styles/calendar.css">
+    <!-- SPELLS -->
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 
-    <div class="inputs">
+    <script src="../js/controllers/signup.js"></script>
+    <script src="../js/services/loginService.js"></script>
 
-    <table>
+</head>
+
+<script type="text/ng-template" id="error-messages">
+    <div ng-message="compareTo" class="messages">Must match the previous entry</div>
+</script>
+<body>      <!--  <div><img src="../images/ab1.png"/></div> -->
+            <div style="border: solid 1px blue;">
+            <form name="createAsset" style"padding: 3px 13px 0 0" id="createAsset" ng-controller="issueLicenseCtrl" ng-submit="submit()" >
+                <div style "right"/>
+                <div/>
+                <h4>ISSUE LICENSE</h4>
+            <div class="form-group">
+                 <table>
         <tr class="spaceUnder">
             <td>
     <label>Software Name</label>
             </td>
             <td width="50"></td>
             <td>
-                <select ng-model="myForm.software"
+                <select class="form-control" ng-model="myForm.software"
                         ng-options="obj.id as obj.name for obj in myForm.options">
                     <!--<option ng-repeat="software in softwares"  value={{software.name}}>{{software.name}}</option>-->
                     <option value="">Select Software</option>
@@ -28,7 +60,7 @@
             </td>
             <td width="50"></td>
             <td>
-                <input maxlength="5" type="number" ng-model="myForm.quantity" ng-required="true">
+                <input class="form-control" maxlength="5" type="number" ng-model="myForm.quantity" ng-required="true">
             </td>
         </tr>
 
@@ -53,7 +85,7 @@
             <td>
                 <div class="form-group">
                     <div class="control">
-                        <input id="companyName"  type="text" ng-model="myForm.companyName" ng-required="true">
+                        <input id="companyName" class="form-control"  type="text" ng-model="myForm.companyName" ng-required="true">
                     </div>
                 </div>
             </td>
@@ -66,7 +98,7 @@
             <td>
                 <div class="form-group">
                     <div class="control">
-                        <input id="key"  type="text" ng-model="myForm.key" ng-required="true">
+                        <input class="form-control" id="key"  type="text" ng-model="myForm.key" ng-required="true">
                     </div>
                 </div>
             </td>
@@ -79,7 +111,7 @@
             <td>
                 <div class="form-group">
                     <div class="control">
-                        <input id="version"  type="text" ng-model="myForm.version" ng-required="true">
+                        <input id="version" class="form-control"  type="text" ng-model="myForm.version" ng-required="true">
                     </div>
                 </div>
             </td>
@@ -87,10 +119,14 @@
     </table>
         <table>
             <tr>
-                <td align="center" width="406px">
-<input type="submit" name="Create Asset" id="submitbutton" align="center" value="Create Asset">
+                <td align="right" width="406px">
+          <input type="submit" name="Create Asset" class="btn btn-primary" id="submitbutton" align="center" value="Create Asset">
                 </td>
             </tr>
         </table>
-</div>
-</form>
+      </div>
+                            </form>
+            
+            </div>
+</body>
+</html>
