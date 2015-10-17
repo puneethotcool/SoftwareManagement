@@ -6,7 +6,7 @@ var licenseMgmtApp = angular.module('issueasset', []);
 licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',function ($scope,$rootScope,Licenses) {
     $scope.myForm = {};
     $scope.myForm.software  = "";
-    $scope.myForm.quantity = "";
+    /*$scope.myForm.quantity = "";*/
     $scope.myForm.expirationDate = "";
     $scope.myForm.output="";
     $scope.myForm.key = "";
@@ -28,7 +28,7 @@ licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',
     $scope.submit=function() {
         var formData = {
             'software': $scope.myForm.software,
-            'quantity': $scope.myForm.quantity,
+            'quantity': 1,
             'expirationdate': $scope.myForm.expirationDate,
             'username': $rootScope.loggedUser,
             'key':$scope.myForm.key,
@@ -36,7 +36,7 @@ licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',
             'version':$scope.myForm.version
         };
         $scope.myForm.software = "";
-        $scope.myForm.quantity = '';
+       /* $scope.myForm.quantity = '';*/
         $scope.myForm.expirationDate = '';
         $scope.myForm.key = "";
         $scope.myForm.companyName = "";
