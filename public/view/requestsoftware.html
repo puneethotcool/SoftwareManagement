@@ -1,3 +1,63 @@
+
+<!--<h4>Request License</h4>-->
+
+<div class="main-container">
+    <link href="styles/Sign-up.css" rel="stylesheet">
+    <div class="col-lg-12">
+        <div class="col-lg-1">
+
+        </div>
+
+        <div class="col-lg-5">
+            <div class="row top3">
+
+            </div>
+            <p class="row top3"></p>
+            <p class="row top3"></p>
+                    <form name="requestAsset" id="requestAsset" ng-controller="requestLicenseCtrl" ng-submit="submit()">
+                        <div class="panel-body">
+                            <label>Software </label>
+                            <select class="form-control" ng-model="myForm.software"
+                                    ng-options="obj.id as obj.name for obj in myForm.options">
+                                <option value="">Select Software</option>
+                            </select>
+                        </div>
+                        <div class="panel-body">
+                            <label>Company</label>
+                            <input id="company"  type="text" ng-model="myForm.company" ng-required="true" class="form-control">
+                        </div>
+                        <div class="panel-body">
+                            <label>Version</label>
+                            <input id="version" type="text" ng-model="myForm.version" ng-required="true" class="form-control">
+                        </div>
+                        <div class="panel-body">
+                            <label>Business Justification</label>
+                            <textarea id="justification" class="form-control" ng-model="myForm.justification" ng-required="true"></textarea>
+                        </div>
+                        <div class="panel-body">
+                            <label>Required Till Date</label>
+                            <input id="date-birth" class="form-control" type="date" ng-model="myForm.requestEndDate" ng-required="true">
+                        </div>
+                        <div class="panel-body">
+                            <input type="submit" name="Request Asset" id="submitbutton" align="center" value="Request Asset" class="btn btn-primary">
+                        </div>
+
+                        </form>
+            </div>
+        <div class="col-lg-6">
+            <div class="row top7">
+
+            </div>
+            <p class="row top7"></p>
+            <p class="row top7"></p>
+            <img src="../images/myrequests.png"/>
+        </div>
+
+
+    </div>
+    </div>
+
+<!--
 <form name="requestAsset" id="requestAsset" ng-controller="requestLicenseCtrl" ng-submit="submit()">
     <div class="header">
     <h3>Request Asset</h3>
@@ -16,13 +76,53 @@
             <td>
                 <select ng-model="myForm.software"
                         ng-options="obj.id as obj.name for obj in myForm.options">
-                    <!--<option ng-repeat="software in softwares"  value={{software.name}}>{{software.name}}</option>-->
                     <option value="">Select Software</option>
                 </select>
             </td>
         </tr>
 
-       
+        <tr class="spaceUnder">
+            <td>
+                <label>Company</label>
+            </td>
+            <td width="50"></td>
+            <td>
+                <div class="form-group">
+                    <div class="control">
+                        <input id="company"  type="text" ng-model="myForm.company" ng-required="true">
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr class="spaceUnder">
+            <td>
+                <label>Version</label>
+            </td>
+            <td width="50"></td>
+            <td>
+                <div class="form-group">
+                    <div class="control">
+                        <input id="version" type="text" ng-model="myForm.version" ng-required="true">
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+        <tr class="spaceUnder">
+            <td>
+                <label>Business Justification</label>
+            </td>
+            <td width="50"></td>
+            <td>
+                <div class="form-group">
+                    <div class="control">
+                        <textarea id="justification" class="form-control" ng-model="myForm.justification" ng-required="true"></textarea>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
         <tr class="spaceUnder">
             <td>
                 <label>Required Till Date</label>
@@ -46,4 +146,4 @@
             </tr>
         </table>
 </div>
-</form>
+</form>-->

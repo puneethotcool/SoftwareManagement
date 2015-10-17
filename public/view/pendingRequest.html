@@ -9,10 +9,10 @@
     </thead>
 
     <tbody>
-    <tr ng-repeat="request in reviewpendingRequestData">
+    <tr ng-repeat="request in reviewpendingRequestData | filter:filterUserRequest">
         <td>{{request.software}}</td>
         <td>{{request.requestEndDate}}</td>
-        <td>{{request.status}}</td>
+        <td>{{request.status | uppercase}}</td>
 
     </tr>
     </tbody>

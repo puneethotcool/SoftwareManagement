@@ -25,7 +25,9 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
     $scope.myForm.software  = "";
     $scope.myForm.requestEndDate = "";
     $scope.myForm.output="";
-
+    $scope.myForm.company='';
+    $scope.myForm.version='';
+    $scope.myForm.justification='';
 
     Licenses.getSoftwareList()
         .success(function(data) {
@@ -34,14 +36,6 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
             $scope.myForm.options = data;
         });
 
-    /*$scope.myForm.options = [
-        { id : "rad", name: "Rational Application Developer" }
-        ,{ id : "parasoft", name: "Parasoft" }
-        ,{ id : "altovaXMLSpy"  , name: "Altova  XMLSpy" }
-    ];*/
-
-
-   
     // Preparing the Json Data from the Angular Model to send in the Server.
     $scope.submit=function() {
         var formData = {
@@ -49,10 +43,16 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
             'requestEndDate': $scope.myForm.requestEndDate,
             'username': $rootScope.loggedUser,
             'status':'pending',
-            'id': (new Date).getTime()
+            'id': (new Date).getTime(),
+            'company': $scope.myForm.company,
+            'version': $scope.myForm.version,
+            'justification':$scope.myForm.justification
         };
         $scope.myForm.software = "";
         $scope.myForm.requestEndDate = '';
+        $scope.myForm.company='';
+        $scope.myForm.version='';
+        $scope.myForm.justification='';
         var jdata = 'mydata=' + JSON.stringify(formData);
         Licenses.requestLicense(jdata).success(function (response) {
             alert(response);

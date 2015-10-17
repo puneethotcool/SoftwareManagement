@@ -10,6 +10,9 @@ licenseMgmtApp.controller('pendingRequestCtrl', ['$scope','$rootScope','Licenses
             $scope.reviewpendingRequestData = data;
         });
 
+    $scope.filterUserRequest = function(request){
+        return request.username === $rootScope.loggedUser;
+    }
 }]);
 
 

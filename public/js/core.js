@@ -43,7 +43,7 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  controller: 'taskListCtrl'
 			  })
 
-			   .state('pendingRequest',{
+			   .state('requestStatus',{
 				  url:"/pendingRequest",
 				  templateUrl: 'view/pendingRequest.html',
 				  controller: 'pendingRequestCtrl'
