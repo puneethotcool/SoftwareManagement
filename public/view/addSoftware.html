@@ -1,0 +1,37 @@
+<form name="addSoftware" id="addSoftware" ng-controller="addSoftwareCtrl" ng-submit="submit()">
+    <div class="header">
+        <h3>Add Software</h3>
+    </div>
+    <div class="sep"></div>
+
+
+    <div class="inputs">
+
+        <table>
+
+
+
+            <tr class="spaceUnder">
+                <td>
+                    <label>Software Name</label>
+                </td>
+                <td width="50"></td>
+                <td>
+                    <div class="form-group">
+                        <div class="control">
+                            <input id="softwareName"  type="text" ng-model="myForm.software" ng-required="true">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+        <table>
+            <tr>
+                <td align="center" width="406px">
+                    <input type="submit" name="Request Asset" id="submitbutton" align="center" value="Add Software">
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

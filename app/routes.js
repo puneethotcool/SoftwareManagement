@@ -45,6 +45,13 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/api/getSoftwareList/', function(req, res) {
+		console.log("getSoftwareList request - " );
+		utility.getSoftwareList(function(softwares){
+			res.send(softwares);
+		});
+	});
+
 	app.get('/api/viewMyPendingRequests/:username', function(req, res) {
 		console.log("viewMyRequests request - " + req.params.username);
 		utility.viewMyPendingRequests(req.params.username,function(myTasks){
@@ -64,6 +71,12 @@ module.exports = function(app) {
 		console.log("Issue License request received" + req.body.mydata);
 		utility.issueLicense(req);
 		res.send("License Issued");
+	});
+
+	app.post('/api/addLicenseToMaster', function(req, res) {
+		console.log("addLicenseToMaster request received" + req.body.mydata);
+		utility.addSoftwareToMaster(req);
+		res.send("Software Added to Master");
 	});
 
 	app.post('/api/transfer', function(req, res) {

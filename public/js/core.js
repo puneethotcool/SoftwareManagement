@@ -47,6 +47,11 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  templateUrl: 'view/pendingRequest.html',
 				  controller: 'pendingRequestCtrl'
 			  })
+			  .state('addSoftware',{
+				  url:"/addSoftware",
+				  templateUrl: 'view/addSoftware.html',
+				  controller: 'addSoftwareCtrl'
+			  })
 
 
 			  .state('transferLicense',{

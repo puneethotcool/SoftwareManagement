@@ -3,19 +3,42 @@
  */
 var licenseMgmtApp = angular.module('requestasset', []);
 
+licenseMgmtApp.controller('addSoftwareCtrl', ['$scope','Licenses',function ($scope,Licenses) {
+    $scope.myForm = {};
+    $scope.myForm.software  = "";
+    $scope.submit = function(){
+
+        var formData = {
+            'id': $scope.myForm.software,
+            'name': $scope.myForm.software
+        };
+        $scope.myForm.software  = "";
+        var jdata = 'mydata=' + JSON.stringify(formData);
+        Licenses.addLicenseToMaster(jdata).success(function (response) {
+            alert(response);
+        });
+    };
+}]);
+
 licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses',function ($scope,$rootScope,Licenses) {
     $scope.myForm = {};
     $scope.myForm.software  = "";
     $scope.myForm.requestEndDate = "";
     $scope.myForm.output="";
 
-    $scope.myForm.options = [
+    Licenses.getSoftwareList()
+        .success(function(data) {
+            console.log(data);
+            console.log("Stingify:::"+JSON.stringify(data));
+            $scope.myForm.options = data;
+        });
+
+    /*$scope.myForm.options = [
         { id : "rad", name: "Rational Application Developer" }
         ,{ id : "parasoft", name: "Parasoft" }
         ,{ id : "altovaXMLSpy"  , name: "Altova  XMLSpy" }
-    ];
-    //console.log('HERE');
-   // console.log('$scope.myForm.software');
+    ];*/
+
     // Preparing the Json Data from the Angular Model to send in the Server.
     $scope.submit=function() {
         var formData = {
@@ -28,7 +51,7 @@ licenseMgmtApp.controller('requestLicenseCtrl', ['$scope','$rootScope','Licenses
         $scope.myForm.requestEndDate = '';
         var jdata = 'mydata=' + JSON.stringify(formData);
         Licenses.requestLicense(jdata).success(function (response) {
-        alert(response);
+            alert(response);
         }); 
         return true;
     }

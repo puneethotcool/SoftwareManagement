@@ -13,11 +13,17 @@ licenseMgmtApp.controller('issueLicenseCtrl', ['$scope','$rootScope','Licenses',
     $scope.myForm.companyName = "";
     $scope.myForm.version='';
 
-    $scope.myForm.options = [
+    /*$scope.myForm.options = [
         { id : "Rational Application Developer", name: "Rational Application Developer" }
         ,{ id : "Parasoft", name: "Parasoft" }
         ,{ id : "Altova  XMLSpy"  , name: "Altova  XMLSpy" }
-    ];
+    ];*/
+    Licenses.getSoftwareList()
+        .success(function(data) {
+            console.log(data);
+            console.log("Stingify:::"+JSON.stringify(data));
+            $scope.myForm.options = data;
+        });
     // Preparing the Json Data from the Angular Model to send in the Server.
     $scope.submit=function() {
         var formData = {

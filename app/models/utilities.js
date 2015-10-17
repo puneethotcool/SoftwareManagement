@@ -77,6 +77,26 @@ module.exports = {
         client.rpush('SoftwareRequest', userRequest);
     },
 
+    addSoftwareToMaster : function(userData){
+        var jsonData = JSON.parse(userData.body.mydata);
+
+        var softwares = [];
+        softwares.push(userData.body.mydata);
+        client.rpush('SoftwareList', softwares);
+    },
+
+    getSoftwareList : function(callback){
+        var requests = client.lrange('SoftwareList',0,-1,function(err,res){
+            var resonseArray = [];
+            for(var i in res){
+                resonseArray.push(JSON.parse(res[i]));
+            }
+            console.log('request: '+ resonseArray);
+            return callback(resonseArray);
+        });
+        console.log('requests: '+ requests);
+    },
+
     myPendingTasks : function(userName,callback){
         //var jsonData = JSON.parse(userData.body.mydata);
         var requests = client.lrange('SoftwareRequest',0,-1,function(err,res){
