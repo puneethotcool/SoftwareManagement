@@ -8,12 +8,17 @@ licenseMgmtApp.controller('taskListCtrl', ['$scope','$rootScope','Licenses','ngD
         .success(function(data) {
             $scope.reviewTaskData = data;
         });
+
+    $scope.filterPendingRequest = function(request){
+      return request.status === 'pending';
+     }
 }]);
 
 licenseMgmtApp.controller('processTransferCtrl', ['$scope','$rootScope','Licenses','ngDialog',function ($scope,$rootScope,Licenses,ngDialog) {
   // var requestedSoftware; 
 
   $scope.filterSelectedAsset = function(asset){
+            if(!asset.metadataOfIssuence) return false;
    return  asset.metadataOfIssuence.data.assetName === $scope.requestedLicense.softwareName;
   }
 
@@ -31,6 +36,7 @@ licenseMgmtApp.controller('processTransferCtrl', ['$scope','$rootScope','License
     var finalData = 'mydata='+JSON.stringify(data);
     console.log(data +' -----------------'+ finalData);
     Licenses.transfer(finalData);
+    alert('Transfer Complete');
     
     console.log('transferLicense -'  + assetId +' : '+ fromUserId +' : '+ toUserId + ' : '+requestRecordId);
 

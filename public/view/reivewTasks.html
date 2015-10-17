@@ -9,7 +9,7 @@
     </thead>
 
     <tbody>
-    <tr ng-repeat="request in reviewTaskData">
+    <tr ng-repeat="request in reviewTaskData | filter:filterPendingRequest">
         <td>{{request.software}}</td>
         <td>{{request.requestEndDate}}</td>
         <td>{{request.username}}</td>

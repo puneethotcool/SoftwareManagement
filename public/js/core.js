@@ -39,7 +39,7 @@ var licenseManagementApp = angular.module('licenseManagement', [
 
 			  .state('taskList',{
 				  url:"/taskList",
-				  templateUrl: 'view/taskList.html',
+				  templateUrl: 'view/reivewTasks.html',
 				  controller: 'taskListCtrl'
 			  })
 

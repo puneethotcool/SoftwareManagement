@@ -9,6 +9,7 @@ licenseMgmtApp.controller('pendingRequestCtrl', ['$scope','$rootScope','Licenses
             console.log("Stingify:::"+JSON.stringify(data));
             $scope.reviewpendingRequestData = data;
         });
+
 }]);
 
 
