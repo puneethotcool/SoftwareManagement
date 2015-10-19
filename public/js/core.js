@@ -53,6 +53,11 @@ var licenseManagementApp = angular.module('licenseManagement', [
 				  templateUrl: 'view/addSoftware.html',
 				  controller: 'addSoftwareCtrl'
 			  })
+			  .state('viewIssuedLicense',{
+				  url:"/viewIssuedLicense",
+				  templateUrl: 'view/viewIssuedLicense.html',
+				  controller: 'viewIssuedLicenseCtrl'
+			  })
 
 
 			  .state('transferLicense',{

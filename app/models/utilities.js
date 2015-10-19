@@ -8,20 +8,12 @@ var commonUtils = require('./commonUtils');
 var blockchain = require('./api/blockchain');
 var dbUtils = require('./dbUtils');
 
-
-
 var settings = {
     network: 'testnet',
     privateSeed: '6962dcb22b5cbe8b2e37471c5c00e9b1422dc8b1e83f3997d11625b6aac9d29d',
     coloredCoinsHost: 'https://testnet.api.coloredcoins.org',
     coluHost: 'https://testnet.engine.colu.co'
 }
-
-
-
-
-
-
 
 module.exports = {
     signUpUser: function(userData){
@@ -30,16 +22,14 @@ module.exports = {
         var colu = new Colu(settings);
         colu.init();
         colu.on('connect', function () {
-          /*  var hash = crypto
-                .createHash("md5")
-                .update(jsonData.password)
-                .digest('hex');*/
             var hash = commonUtils.encrypt(jsonData.password);
-
             var privateSeed = colu.hdwallet.getPrivateSeed();
             var address = colu.hdwallet.getAddress();
             console.log("privateseed:" + privateSeed);
             console.log("address:" + address);
+            var registeredUsers = [];
+            registeredUsers.push(jsonData.username);
+            client.rpush('RegisteredUsers', registeredUsers);
             client.hmset(jsonData.username, 'address', address, 'privateseed', privateSeed, 'location', jsonData.location, 'department', jsonData.department, 'password', hash, function (error, result) {
                 if (error) {
                     return false;
@@ -53,9 +43,6 @@ module.exports = {
 
     requestLicense : function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
-        // settings.privateSeed=null;
-
-        var status ='Pending';
         var userRequest = [];
         userRequest.push(userData.body.mydata);
         client.rpush('SoftwareRequest', userRequest);

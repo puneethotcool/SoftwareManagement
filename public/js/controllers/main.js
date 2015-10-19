@@ -1,6 +1,6 @@
-angular.module('licenseControllers', [])
-	// inject the Todo service factory into our controller
-	.controller('viewLicenseCtrl', ['$scope','$http','Licenses' ,function($scope, $http,Licenses) {
+var app =angular.module('licenseControllers', []);
+// inject the Todo service factory into our controller
+	app.controller('viewLicenseCtrl', ['$scope','$http','Licenses' ,function($scope, $http,Licenses) {
 
 		Licenses.view()
 			.success(function(data) {
@@ -11,4 +11,15 @@ angular.module('licenseControllers', [])
 
 
 	}]);
+
+app.controller('viewIssuedLicenseCtrl', ['$scope','$http','Licenses' ,function($scope, $http,Licenses) {
+		Licenses.viewIssuedLicense()
+		.success(function(data) {
+			console.log('data: '+ JSON.stringify(data));
+			$scope.assetData = data;
+		});
+
+
+
+}]);
 

@@ -7,6 +7,11 @@ angular.module('licenseService', [])
 				return $http.get('/api/viewLicense/'+$rootScope.loggedUser);
 			},
 
+			viewIssuedLicense : function() {
+				console.log('viewIssuedLicense called');
+				return $http.get('/api/viewIssuedLicense/');
+			},
+
 			getSoftwareList : function() {
 				console.log('view Licenses called');
 				return $http.get('/api/getSoftwareList/');

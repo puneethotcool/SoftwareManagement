@@ -38,6 +38,14 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/api/viewIssuedLicense/', function(req, res) {
+		console.log("viewIssuedLicense request");
+		viewLicense.getIssuedLicenses(function(allAssets){
+			console.log('All assets' + JSON.stringify(allAssets));
+			res.send(allAssets);
+		});
+	});
+
 	app.get('/api/viewMyRequests/:username', function(req, res) {
 		console.log("viewMyRequests request - " + req.params.username);
 		utility.myPendingTasks(req.params.username,function(myTasks){
