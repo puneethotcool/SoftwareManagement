@@ -35,14 +35,13 @@ getPrivateSeedFromDB : function(id,callback){
   });
 },
 
-updateSoftwareRequestedWithSucess : function(requestRecordId,callback){
+updateSoftwareRequestedStatus : function(requestRecordId,status,callback){
 	getAllSoftwareRequests(function(res){
 
 		for(var i in res){
               var jdata =  JSON.parse(res[i]);
-              console.log('updateSoftwareRequestedWithSucess jdata - ' +jdata.id + ' : '+ requestRecordId);
               	if(jdata.id == requestRecordId){ 
-              		jdata.status = "completed";
+              		jdata.status = status;
               		var jstr = JSON.stringify(jdata); 
               		client.lset('SoftwareRequest',i,jstr,function(err,response){
               			console.log('SoftwareRequest update ' + response);

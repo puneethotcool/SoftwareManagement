@@ -68,6 +68,10 @@ angular.module('licenseService', [])
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
 
+			},
+			rejectLicenseRequest : function(requestId){
+				console.log('rejectLicenseRequest angular '+ requestId);
+				$http.post('/api/transfer/reject/'+requestId);
 			}
 		}
 	}]);

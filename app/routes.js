@@ -94,6 +94,11 @@ module.exports = function(app) {
 	res.send("Transfer Completed");
 	});
 
+	app.post('/api/transfer/reject/:requestId', function(req, res) {
+	utility.rejectLicenseRequest(req.params.requestId);
+	res.send("Request rejected");
+	});
+
 	// create todo and send back all todos after creation
 	/*app.post('/api/todos', function(req, res) {
 

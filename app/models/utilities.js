@@ -98,10 +98,6 @@ module.exports = {
         console.log('requests: '+ requests);
     },
 
-
-
-
-
     issueLicense : function(userData){
         var jsonData = JSON.parse(userData.body.mydata);
         var address='';
@@ -162,7 +158,7 @@ transferLicense : function(userdata){
                   console.log(msg);
                   if(!msg.error){
                     //Successfully transfered update the status
-                       dbUtils.updateSoftwareRequestedWithSucess(jsonData.requestRecordId,function(err,res){
+                       dbUtils.updateSoftwareRequestedStatus(jsonData.requestRecordId,"completed",function(err,res){
                            return res;
                     });
                   }
@@ -172,7 +168,12 @@ transferLicense : function(userdata){
 
       });
 });
+},
 
-
-}
+rejectLicenseRequest : function(requestId){
+        console.log('rejectLicenseRequest requestId :' + requestId);
+        dbUtils.updateSoftwareRequestedStatus(requestId,"rejected",function(err,res){
+                           return res;
+                    });
+    }
 }

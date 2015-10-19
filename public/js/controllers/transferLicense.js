@@ -1,79 +1,51 @@
 
     var app = angular.module('transferLicense', ['ngMessages']);
 
-    app.controller('transferLicenseController', ['$scope','$http','Licenses' ,'$rootScope',function( $scope,$http,Licenses,$rootScope) {
+    app.controller('transferLicenseController', ['$scope','$http','Licenses' ,'$rootScope','$filter',function( $scope,$http,Licenses,$rootScope,$filter) {
 
-         Licenses.view()
-            .success(function(data) {
-                console.log('data: '+ JSON.stringify(data));
-                $scope.assetData = data;
-            });
-
-        // alert($rootScope.loggedUser);
-        var model = this;
-
-        model.message = "";
-
-        model.transfer = {
-            fromId: $rootScope.loggedUser,
-            toId: "",
-            assetId: ""
-        };
-
-        
+ Licenses.view()
+    .success(function(data) {
+        console.log('data: '+ JSON.stringify(data));
+        $scope.assetsData = data;
+        filterAssetWithoutMetaData();
+    });
 
 
-       model.submit = function(isValid) {
+filterAssetWithoutMetaData = function(){
+    // $scope.assetsData = $filter('filter')($scope.assetsData, {!asset.metadataOfIssuence});
 
-            if (isValid) {
+    $scope.assetsData = $scope.assetsData.filter(function(asset) {
+    return asset.metadataOfIssuence;
+});
+  
+}
 
-model.message = "Made some progress";
-                var formData = {
-                    'fromId' : this.transfer.fromId,
-                    'toId' : this.transfer.toId,
-                    'assetId' : this.transfer.assetId                    
-                };
-               // alert(this.transfer.fromId);
-                model.transfer = {
-                    fromId: "",
-                    toId: "",
-                    assetId: "" 
-                    
-                };
-               var jdata = 'mydata='+JSON.stringify(formData);
-                Licenses.transfer(jdata).success(function(response){
-                });
-                return true;
-            } else {
-                model.message = "There are still invalid fields below";
-            }
-        };
+removeAssetDataItem = function(index){
+    $scope.assetsData.splice(index, 1);
+  }
+
+$scope.transferDirectLicense = function(index){
+    console.log('transferDirectLicense Index ' + index)
+    var asset = $scope.assetsData[index];
+    var assetId = asset.assetId;
+    var fromUserId = $rootScope.loggedUser;
+    
+    var toUserId = asset.transferToUser;
+
+    console.log('asset   5252'+asset);
+    console.log('transferLicense -'  + assetId +' : '+ fromUserId +' : '+ toUserId);
+
+    var data = {'fromId' : fromUserId,
+                'toId' : toUserId ,
+                'assetId' : assetId,
+                'requestRecordId': ''};
+
+    var finalData = 'mydata='+JSON.stringify(data);
+    console.log(data +' -----------------'+ finalData);
+    Licenses.transfer(finalData);
+    alert('Transfer Complete');
+    removeAssetDataItem(index);
+  }
 
 }]);
-    
-
-
-    var compareTo = function() {
-
-        return {
-
-            require: "ngModel",
-            scope: {
-                otherModelValue: "=compareTo"
-            },
-            link: function(scope, element, attributes, ngModel) {
-
-                ngModel.$validators.compareTo = function(modelValue) {
-                    return modelValue == scope.otherModelValue;
-                };
-
-                scope.$watch("otherModelValue", function() {
-                    ngModel.$validate();
-                });
-            }
-        };
-    };
-
-    app.directive("compareTo", compareTo);
-
 
